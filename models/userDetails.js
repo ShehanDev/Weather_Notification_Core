@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema({
   name: String,
   email: String,
   city: String,
+  weatherData: [{ timestamp: Date, temperature: Number, description: String }],
   createdAt: {
     type: Date,
     default: new Date(),
