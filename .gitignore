@@ -1,0 +1,58 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore environment-specific files
+.env
+.env.local
+.env.*.local
+
+# Ignore logs and runtime data
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore development files
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore coverage output
+coverage/
+
+# Ignore built production files
+/build/
+/dist/
+
+# Ignore dependency lock files
+package-lock.json
+yarn.lock
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+
+# Ignore config files for popular editors
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.vscode/
+.idea/
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore TypeScript build output
+*.tsbuildinfo
+
+# Ignore node cache directory
+.npm/
