@@ -55,7 +55,6 @@ This API allows users to receive hourly weather reports via email based on their
   - [Endpoints](#endpoints)
   - [Environment Variables](#environment-variables)
 - [Built With](#built-with)
-- [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
@@ -92,21 +91,22 @@ env
     GMAIL_USER=your-email@gmail.com
     GMAIL_PASS=your-gmail-password
 
-Usage
-Endpoints
+## Usage
+
+### Endpoints
 
     POST /user: Store user details (email and location).
     PUT /user/:id/location: Update user's location by user ID.
     GET /user/:id/weather/:date: Retrieve user's weather data for a specific day.
 
-Environment Variables
+### Environment Variables
 
     MONGODB_URI: MongoDB connection string.
     OPENWEATHERMAP_API_KEY: OpenWeatherMap API key.
     GMAIL_USER: Gmail email address for sending weather reports.
     GMAIL_PASS: Gmail password for sending weather reports.
 
-Built With
+## Built With
 
     Express - Web framework for Node.js.
     Mongoose - MongoDB ODM.
@@ -114,13 +114,11 @@ Built With
     Axios - HTTP client for fetching weather data.
     OpenWeatherMap API - Weather data provider.
 
-Contributing
-
-Feel free to contribute to this project. Fork the repository and create a pull request.
-License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-Acknowledgments
+
+## Acknowledgments
 
     Thanks to OpenWeatherMap for providing weather data.
-    Inspiration for this project came from [mention any sources or inspirations]
+    Inspiration for this project came from assessment
