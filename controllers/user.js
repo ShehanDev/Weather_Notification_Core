@@ -56,8 +56,9 @@ export const updateCity = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 // Get User Weather Data for a Given Day
-//app.get('/user/:id/weather/:date',
+
 export const getWeatherByDate = async (req, res) => {
   try {
     const { id, date } = req.params;
@@ -69,10 +70,11 @@ export const getWeatherByDate = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const selectedDate = new Date(date);
+    const selectedDate = new Date(date).toISOString().split("T")[0];
+
     const weatherData = user.weatherData.filter((entry) => {
-      const entryDate = new Date(entry.timestamp);
-      return entryDate.toDateString() === selectedDate.toDateString();
+      const entryDate = new Date(entry.timestamp).toISOString().split("T")[0];
+      return entryDate === selectedDate;
     });
 
     res.status(200).json({ weatherData });
