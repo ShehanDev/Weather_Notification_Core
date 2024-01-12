@@ -4,6 +4,7 @@ import {
   createUsers,
   updateCity,
   getWeatherByDate,
+  activeNotification,
 } from "../controllers/User.js";
 
 //initializing routes
@@ -13,4 +14,5 @@ router.get("/", getUsers);
 router.post("/", createUsers);
 router.put("/:id", updateCity);
 router.get("/:id/weather/:date", getWeatherByDate);
+router.post("/:id/activate-notification", activeNotification);
 export default router;
