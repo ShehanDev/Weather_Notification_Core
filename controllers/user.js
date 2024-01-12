@@ -28,6 +28,59 @@ export const createUsers = async (req, res) => {
   }
 };
 
+// Update User Location
+export const updateCity = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { city } = req.body;
+    console.log("Code works");
+
+    const user = await User.findById(id);
+    // console.log("User:", user);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const weatherData = await fetchWeatherData(city);
+
+    user.city = city;
+    console.log(city);
+    user.weatherData.push({ timestamp: new Date(), ...weatherData });
+    console.log("Weather Data:", weatherData);
+
+    console.log(user);
+    await user.save();
+
+    res.status(200).json({ message: "User location updated successfully!" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+// Get User Weather Data for a Given Day
+//app.get('/user/:id/weather/:date',
+export const getWeatherByDate = async (req, res) => {
+  try {
+    const { id, date } = req.params;
+
+    console.log(id, date);
+
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const selectedDate = new Date(date);
+    const weatherData = user.weatherData.filter((entry) => {
+      const entryDate = new Date(entry.timestamp);
+      return entryDate.toDateString() === selectedDate.toDateString();
+    });
+
+    res.status(200).json({ weatherData });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 //fetch the weather data
 async function fetchWeatherData(location) {
   const apiKey = process.env.WEATHER_API_KEY;
