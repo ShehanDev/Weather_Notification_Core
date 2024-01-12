@@ -44,11 +44,9 @@ export const updateCity = async (req, res) => {
     const weatherData = await fetchWeatherData(city);
 
     user.city = city;
-    console.log(city);
     user.weatherData.push({ timestamp: new Date(), ...weatherData });
     console.log("Weather Data:", weatherData);
 
-    console.log(user);
     await user.save();
 
     res.status(200).json({ message: "User location updated successfully!" });
