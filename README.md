@@ -97,9 +97,7 @@ env
 
     GET   /users : Retriview All users with weather deatls with their Location
     POST /users: Store user details (name , email and city ).
-    PUT /users/:id/location: Update
-    user's location by user ID.
-    (city )
+    PUT /users/:id/location: Update user's location by user ID. (city )
     GET /users/:id/weather/:date: Retrieve user's weather data for a specific day.
     POST /users/:id/activate-notification : To activate email notifications for users and continuously send weather updates every 3 hours
 
