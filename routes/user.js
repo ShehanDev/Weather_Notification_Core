@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getUsers,
+  getUserById,
   createUsers,
   updateCity,
   getWeatherByDate,
@@ -11,6 +12,7 @@ import {
 const router = express.Router();
 
 router.get("/", getUsers);
+router.get("/:id", getUserById);
 router.post("/", createUsers);
 router.put("/:id", updateCity);
 router.get("/:id/weather/:date", getWeatherByDate);

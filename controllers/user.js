@@ -4,6 +4,7 @@ import * as UserService from "../services/userService.js";
 import * as MailService from "../services/mailService.js";
 import cron from "node-cron";
 
+//get all users
 export const getUsers = async (req, res) => {
   try {
     const users = await UserService.getUsers();
@@ -13,6 +14,16 @@ export const getUsers = async (req, res) => {
   }
 };
 
+//get userData by id
+export const getUserById = async (req, res) => {
+  const id = req.body.id; // Assuming you are sending the user id in the request body
+  try {
+    const user = await UserService.getUserById(id);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 //create users with getting weather data
 export const createUsers = async (req, res) => {
   try {
