@@ -73,10 +73,10 @@ This API allows users to receive hourly weather reports via email based on their
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
 
-    Install dependencies:
-
     bash
    ```
+
+2. Install dependencies:
 
 npm install
 
