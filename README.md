@@ -32,8 +32,8 @@ This API allows users to receive hourly weather reports via email based on their
 
    ```bash
    git clone
-   cd your-repo
-   Certainly! A professional README.md file is crucial for any project. It provides essential information for users, contributors, and anyone interested in understanding and using your project. Below is a template for a comprehensive README file for your Node.js API project. Feel free to customize it according to your specific project details.
+   cd Weather_Notification_Core
+
    ```
 
 markdown
