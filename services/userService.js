@@ -1,5 +1,6 @@
 import User from "../models/userDetails.js";
 import cron from "node-cron";
+import bcrypt from "bcrypt";
 
 //get all users
 export const getUsers = async (req, res) => {
@@ -21,16 +22,18 @@ export const getUserById = async (id) => {
 };
 
 //create users with getting weather data
-export const createUser = async (name, email, city, weatherData) => {
+export const createUser = async (name, email, password, city, weatherData) => {
+  const hashedPw = await bcrypt.hash(password, 10);
+
   try {
     const user = new User({
       name,
       email,
+      password: hashedPw,
       city,
       weatherData: [{ timestamp: new Date(), ...weatherData }],
     });
     await user.save();
-    return user;
   } catch (error) {
     throw new Error(error.message);
   }

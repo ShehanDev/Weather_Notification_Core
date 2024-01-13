@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 
 //creating schema for user
 const userSchema = mongoose.Schema({
-  name: String,
-  email: String,
+  name: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   city: String,
   weatherData: [{ timestamp: Date, temperature: Number, description: String }],
   createdAt: {

@@ -2,7 +2,7 @@
 import * as WeatherService from "../services/weatherService.js";
 import * as UserService from "../services/userService.js";
 import * as MailService from "../services/mailService.js";
-import cron from "node-cron";
+import bcrypt from "bcrypt";
 
 //get all users
 export const getUsers = async (req, res) => {
@@ -26,13 +26,20 @@ export const getUserById = async (req, res) => {
 };
 //create users with getting weather data
 export const createUsers = async (req, res) => {
+  const { name, password, email, city } = req.body;
+  // const hashedPw = bcrypt.hash(password, 100);
+
   try {
-    const { name, email, city } = req.body;
     const weatherData = await WeatherService.fetchWeatherData(city);
 
-    const user = await UserService.createUser(name, email, city, weatherData);
-
-    res.status(201).json({ message: "User details stored successfully!" });
+    const user = await UserService.createUser(
+      name,
+      email,
+      password,
+      city,
+      weatherData
+    );
+    res.status(200).json({ message: "User created successfully!" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
