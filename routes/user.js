@@ -6,7 +6,7 @@ import {
   updateCity,
   getWeatherByDate,
   activeNotification,
-} from "../controllers/User.js";
+} from "../controllers/userController.js";
 
 import { login } from "../services/auth.js";
 import { verifyToken } from "../services/auth.js";
