@@ -27,8 +27,8 @@ export const getUserById = async (req, res) => {
 //create users with getting weather data
 export const createUsers = async (req, res) => {
   const { name, password, email, city } = req.body;
-  // const hashedPw = bcrypt.hash(password, 100);
 
+  const hashedPw = await bcrypt.hash(password, 10);
   try {
     const weatherData = await WeatherService.fetchWeatherData(city);
 
