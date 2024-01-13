@@ -62,7 +62,7 @@ export const verifyToken = (req, res, next) => {
     });
   } else {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      console.log("decoded", decoded);
+      // console.log("decoded", decoded);
       if (err) {
         res.status(401).json({
           message: "Invalid token",

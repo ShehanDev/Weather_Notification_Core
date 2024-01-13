@@ -17,7 +17,7 @@ router.post("/login", login);
 //get all user details with weather
 router.get("/all", getUsers);
 //get user details by id
-router.get("getUser/:id", getUserById);
+router.get("/getUser", getUserById);
 //create users
 router.post("/register", createUsers);
 // Update user's city by ID

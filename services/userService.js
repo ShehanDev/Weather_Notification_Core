@@ -114,13 +114,11 @@ export const getUserByName = async (name) => {
 //password validate
 export const validatePassword = async (password, hashedPw) => {
   try {
-    console.log("password", password);
-    console.log("hashedPassword", hashedPw);
     const isMatch = await bcrypt.compare(password, hashedPw);
-    console.log("validate  user", isMatch);
+    //console.log("validate  user", isMatch);
     return isMatch;
   } catch (error) {
-    console.error("Error comparing password:", error.message);
+    //console.error("Error comparing password:", error.message);
     throw new Error("Internal Server Error");
   }
 };
