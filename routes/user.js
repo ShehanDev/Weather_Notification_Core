@@ -8,15 +8,18 @@ import {
   activeNotification,
 } from "../controllers/User.js";
 
+import { login } from "../services/auth.js";
+import { verifyToken } from "../services/auth.js";
+
 //initializing routes
 const router = express.Router();
-
-router.get("/", getUsers);
+//user login route
+router.post("/login", login);
+//get all user details with weather
+router.get("/all", getUsers);
 router.get("getUser/:id", getUserById);
-
-router.post("/", createUsers);
-
-router.put("/:id", updateCity);
-router.get("/:id/weather/:date", getWeatherByDate);
-router.post("/:id/activate-notification", activeNotification);
+router.post("/register", createUsers);
+router.put("/:id", verifyToken, updateCity);
+router.get("/:id/weather/:date", verifyToken, getWeatherByDate);
+router.post("/:id/activate-notification", verifyToken, activeNotification);
 export default router;

@@ -95,3 +95,32 @@ export const scheduleWeatherNotification = async (user, sendWeatherReport) => {
     throw new Error(error.message);
   }
 };
+
+// find user by name
+export const getUserByName = async (name) => {
+  try {
+    const user = await User.findOne({ name: name });
+
+    if (!user) {
+      // User not found
+      return null;
+    }
+    return user;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+//password validate
+export const validatePassword = async (password, hashedPw) => {
+  try {
+    console.log("password", password);
+    console.log("hashedPassword", hashedPw);
+    const isMatch = await bcrypt.compare(password, hashedPw);
+    console.log("validate  user", isMatch);
+    return isMatch;
+  } catch (error) {
+    console.error("Error comparing password:", error.message);
+    throw new Error("Internal Server Error");
+  }
+};
