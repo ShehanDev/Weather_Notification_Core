@@ -16,10 +16,6 @@ app.get("/", (req, res) => {
   res.send("Home api");
 });
 
-app.use("/users", userRoutes);
-const CONNECTION_URL = process.env.DB_URL;
-const PORT = process.env.PORT || 5000;
-
 //db connection
 mongoose
   .connect(CONNECTION_URL)
@@ -27,6 +23,10 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+app.use("/users", userRoutes);
+const CONNECTION_URL = process.env.DB_URL;
+const PORT = process.env.PORT || 5000;
 
 //start server
 app.listen(PORT, () => console.log(`server up and Running at ${PORT} `));

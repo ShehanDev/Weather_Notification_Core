@@ -16,7 +16,8 @@ export const getUsers = async (req, res) => {
 
 //get userData by id
 export const getUserById = async (req, res) => {
-  const id = req.body.id; // Assuming you are sending the user id in the request body
+  const id = req.body.id;
+  // sending the user id in the request body
   try {
     const user = await UserService.getUserById(id);
     res.status(200).json(user);
